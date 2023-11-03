@@ -45,8 +45,8 @@ with db.connect() as connection:
     # select_query = artist_table.select()
 
     # Query 2 - select only the "Name" column from "Artist" table
-    # select_query = artist_table.select().with_only_columns(
-    #     [artist_table.c.Name])
+    select_query = artist_table.select().with_only_columns(
+        [artist_table.c.Name])
 
     # Query 3 - select only "Queen" from the "Artist" table
     # select_query = artist_table.select().where(
@@ -60,8 +60,11 @@ with db.connect() as connection:
 
     # Query 6 - select all tracks where the composer is "Queen" from the
     # "Track" table
-    select_query = track_table.select().where(
-        track_table.c.Composer == "Queen")
+    # select_query = track_table.select().where(
+    #     track_table.c.Composer == "Queen")
+    
+    # for c in track_table.c:
+    #     print(c)
 
     results = connection.execute(select_query)
     for result in results:
